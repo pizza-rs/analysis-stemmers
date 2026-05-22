@@ -16,6 +16,11 @@ pub use pizza_engine as engine;
 mod snowball;
 
 pub mod algorithms;
+pub mod register;
+
+pub use register::register_all;
+pub use register::register_language_analyzers;
+pub use register::register_token_filters;
 
 /// Stemmer tokenizer. Several algorithms are supported, see [`algorithms`] or
 /// https://github.com/infinilabs/pizza-stemmers for a list of all available algorithms.
@@ -84,20 +89,18 @@ impl StemmerFilter {
 }
 
 impl TokenFilter for StemmerFilter {
-    fn filter<'a>(&self, token: Token<'a>) -> Token<'a> {
+    fn filter<'a>(&self, token: &mut Token<'a>) -> (bool, Option<Vec<Token<'a>>>){
         // Apply stemming to the token text
         let stemmed_text = match (self.algorithm)(&token.term) {
             Cow::Owned(stemmed_str) => Cow::Owned(stemmed_str),
             Cow::Borrowed(stemmed_str) => Cow::Owned(stemmed_str.into()), // Convert to owned
         };
 
-        // Create a new Token with the stemmed text
-        Token {
-            term: stemmed_text,
-            start_offset: token.start_offset,
-            end_offset: token.end_offset,
-            position: token.position,
-        }
+        // Update the token with the stemmed text
+        token.term = stemmed_text;
+
+        // No new tokens are produced, so return None
+        (false,None)
     }
 }
 

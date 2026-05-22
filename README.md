@@ -32,6 +32,37 @@ pizza-stemmers = { version = "0.1.0", features = ["default"] }
 
 **See the features table under [Supported algorithms](#supported-algorithms) below.**
 
+## Integration with `pizza-analysis-core`
+
+This crate is a sibling of [`pizza-analysis-core`](../analysis-core). Both
+register components into the same shared
+[`pizza_engine::analysis::AnalysisFactory`]. The app wires them together:
+
+```rust
+use pizza_engine::analysis::AnalysisFactory;
+
+let mut factory = AnalysisFactory::new();
+pizza_analysis_core::analyzers::register_all(&mut factory);
+pizza_analysis_stemmers::register_all(&mut factory); // adds Snowball stemmers + overrides
+```
+
+`pizza_analysis_stemmers::register_all` registers:
+
+- **Named token filters**: `snowball_<lang>` (e.g. `snowball_polish`,
+  `snowball_swedish`, `snowball_turkish`) for use in custom analyzer configs.
+- **Language analyzers**: full `lowercase + stop + snowball` pipelines for
+  `armenian`, `basque`, `catalan`, `estonian`, `lithuanian`, `polish`,
+  `swedish`, and `turkish`. These **override** the stop-only fallbacks
+  registered by `analysis-core`.
+
+You can also register only the token filters (skip overriding analyzers)
+via `pizza_analysis_stemmers::register_token_filters(&mut factory)`.
+
+> **Tip:** Instead of wiring each plugin by hand, use
+> [`pizza-analysis-all`](../analysis-all) — an auto-generated meta-crate
+> produced by [`pizza-plugin-discovery`](../plugin-discovery) — and call
+> `pizza_analysis_all::register_all(&mut factory)` once.
+
 ## Supported algorithms
 
 ### List of available Cargo features
