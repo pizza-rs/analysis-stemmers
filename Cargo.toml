@@ -6,7 +6,7 @@ keywords = ["pizza","search", "tokenizer", "stemmer", "snowball"]
 categories = ["text-processing"]
 license = "BSD-3-Clause"
 authors = ["INFINI Labs Team","Testuj.to s.r.o. <technology@testuj.to>", "Patrik Šimunič"]
-description = "A Rust snowball stemmers with 30+ languages stemming algorithms for INFINI Pizza."
+description = "Snowball stemmers (33 languages) plugin for INFINI Pizza"
 repository = "https://github.com/infinilabs/analysis-stemmers"
 
 [features]
@@ -82,11 +82,11 @@ spanish = []
 swedish = []
 turkish_cilden = []
 yiddish_urieli = []
-
+std = ["pizza-engine/std", "pizza-analysis-core/std"]
 
 [dependencies]
 pizza-common = { path = "../../lib/common" }
-pizza-engine = { path = "../../lib/engine" }
+pizza-engine = { path = "../../lib/engine", default-features = false }
 pizza-analysis-core = { path = "../analysis-core", default-features = false }
 
 daachorse = "1.0"

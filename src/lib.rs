@@ -1,10 +1,9 @@
-#![no_std]
+#![cfg_attr(not(feature = "std"), no_std)]
 #![allow(unused)]
 #[cfg(test)]
-extern crate std; // use the standard library for tests
+extern crate std;
 
 extern crate alloc;
-extern crate core;
 use crate::engine::analysis::Token;
 use crate::engine::analysis::TokenFilter;
 use crate::engine::analysis::Tokenizer;
