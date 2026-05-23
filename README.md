@@ -13,10 +13,10 @@
 
 
 This library bundles several OSS to provide a collection of stemming algorithms for various languages as a Pizza tokenizer. 
-[Pizza](https://github.com/infinilabs/pizza) is a distributed Real-Time Search & AI-Native innovation engine that written in Rust. 
+[Pizza](https://github.com/pizza-rs/pizza) is a distributed Real-Time Search & AI-Native innovation engine that written in Rust. 
 This library originally forked from [tantivy-stemmers](https://github.com/testuj-to/tantivy-stemmers) by testuj-to.
 
-Pizza-stemmers is part of the [Pizza](https://github.com/infinilabs/pizza) search engine project, visit [Pizza's site](http://pizza.rs) for more details.
+Pizza-stemmers is part of the [Pizza](https://github.com/pizza-rs/pizza) search engine project, visit [Pizza's site](http://pizza.rs) for more details.
 
 This library compiles several OSS projects into 1 library:
 - [`snowballstem/snowball`](https://github.com/snowballstem/snowball)

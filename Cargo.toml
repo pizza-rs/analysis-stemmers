@@ -7,7 +7,7 @@ categories = ["text-processing"]
 license = "BSD-3-Clause"
 authors = ["INFINI Labs Team","Testuj.to s.r.o. <technology@testuj.to>", "Patrik Šimunič"]
 description = "Snowball stemmers (33 languages) plugin for INFINI Pizza"
-repository = "https://github.com/infinilabs/analysis-stemmers"
+repository = "https://github.com/pizza-rs/analysis-stemmers"
 
 [features]
 default = [

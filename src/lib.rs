@@ -22,7 +22,7 @@ pub use register::register_language_analyzers;
 pub use register::register_token_filters;
 
 /// Stemmer tokenizer. Several algorithms are supported, see [`algorithms`] or
-/// https://github.com/infinilabs/pizza-stemmers for a list of all available algorithms.
+/// https://github.com/pizza-rs/pizza-stemmers for a list of all available algorithms.
 ///
 /// ❗️❗️ Tokens are expected to be lowercased beforehand.
 #[derive(Clone)]
