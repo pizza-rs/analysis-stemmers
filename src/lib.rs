@@ -307,7 +307,10 @@ mod tests {
         // Apply the filter to each token
         let filtered_tokens: Vec<Token> = tokens
             .into_iter()
-            .map(|token| filter.filter(token))
+            .map(|mut token| {
+            let _ = filter.filter(&mut token);
+            token
+        })
             .collect();
 
         // Print the filtered tokens for verification
