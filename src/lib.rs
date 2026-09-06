@@ -88,7 +88,7 @@ impl StemmerFilter {
 }
 
 impl TokenFilter for StemmerFilter {
-    fn filter<'a>(&self, token: &mut Token<'a>) -> (bool, Option<Vec<Token<'a>>>){
+    fn filter<'a>(&self, token: &mut Token<'a>) -> (bool, Option<Vec<Token<'a>>>) {
         // Apply stemming to the token text
         let stemmed_text = match (self.algorithm)(&token.term) {
             Cow::Owned(stemmed_str) => Cow::Owned(stemmed_str),
@@ -99,7 +99,7 @@ impl TokenFilter for StemmerFilter {
         token.term = stemmed_text;
 
         // No new tokens are produced, so return None
-        (false,None)
+        (false, None)
     }
 }
 
@@ -308,9 +308,9 @@ mod tests {
         let filtered_tokens: Vec<Token> = tokens
             .into_iter()
             .map(|mut token| {
-            let _ = filter.filter(&mut token);
-            token
-        })
+                let _ = filter.filter(&mut token);
+                token
+            })
             .collect();
 
         // Print the filtered tokens for verification

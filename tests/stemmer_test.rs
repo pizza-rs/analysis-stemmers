@@ -1,11 +1,11 @@
+use pizza_analysis_stemmers::algorithms;
+use pizza_analysis_stemmers::StemmerTokenizer;
 use pizza_engine::analysis::Analyzer;
 use pizza_engine::analysis::Normalizer;
 use pizza_engine::analysis::SimpleTokenCollector;
 use pizza_engine::analysis::Token;
 use pizza_engine::analysis::TokenFilter;
 use pizza_engine::analysis::Tokenizer;
-use pizza_analysis_stemmers::algorithms;
-use pizza_analysis_stemmers::StemmerTokenizer;
 use std::fs::File;
 use std::io::BufRead;
 use std::io::BufReader;
